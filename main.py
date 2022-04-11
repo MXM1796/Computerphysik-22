@@ -1,8 +1,6 @@
 def test():
+    print("Test test test ")
     print("Hello World")
-    print("Hello World111")
-    print("aasudasubddfasuf")
-    print("aasudasubddfasuf")
 test()
 
 
