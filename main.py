@@ -18,3 +18,4 @@ def randomWalk(p, q0, N):
 
 
 print(randomWalk(points,points[0],100))
+
