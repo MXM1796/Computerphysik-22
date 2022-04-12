@@ -1,4 +1,7 @@
 import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
 
 points = [[0, 0], [0.5, 0], [1, 0], [0, 0.5], [1, 0.5], [0, 1], [0.5, 1], [1, 1]]#Initialisierung der Punkte p_0  bis p_7
 
@@ -12,7 +15,7 @@ def randomWalk(p, q0, N):                          # Implementierung des randomw
         i = np.random.randint(0, 8)                # i wird eine zufällige Ganzzahl zugewiesen
         q.append(np.divide(np.add(q[n], p[i]), 3)) # Der Liste wird das Element q_n+1 hinzugefügt
 
-    return q                                       # Die funktion gibt q_0 bis q_N als Liste zurück
+    return q                                       # Die Funktion gibt q_0 bis q_N als Liste zurück
 
 
 def getN(q, e):                                    # Funktion zum zählen der nicht leeren Raster der Punkte q mit Gitterkonstante e
@@ -23,7 +26,7 @@ def getN(q, e):                                    # Funktion zum zählen der ni
         y = int(i[1] / e)
         raster[x][y] = 1                           # Das Quadrat in welchem sich der Punkt befindet wird auf 1 gesetzt
 
-    return np.sum(raster)                          #N(e) entspricht dann der Summe der Quadratwerte
+    return np.sum(raster)                          # N(e) entspricht dann der Summe der Quadratwerte
 
 
 
@@ -32,4 +35,7 @@ def getFractalDim(q, e):                            # Implementierung der Formel
 
 
 
-print (getFractalDim(randomWalk(points,points[0],1000),e=1/128))
+#print (getFractalDim(randomWalk(points,points[0],1000),e=1/128))
+q=np.transpose(randomWalk(points,points[0],1000))
+plt.plot(q[0],q[1],"ob")
+plt.show()
