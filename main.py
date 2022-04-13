@@ -47,7 +47,7 @@ plt.plot(a[0],a[1],"ob" ,ms=1)# Erzeugen des Plots mit Punktgröße ms
 plt.xlabel("x")# x-Achse beschriften
 plt.ylabel("y")# y-Achse beschriften
 #plt.show()     #Zeichnen des Plots
-
+plt.savefig("Fraktal")
 # Erzeugen des Dimensionsplot
 i= range(2,9)
 e= np.divide(1,np.power(2,i))# Berechnen der Gitterkonstanten von e_2 bis e_8
@@ -69,6 +69,7 @@ plt.ylabel("D")# y-Achse berschriften
 plt.legend() #Erstellen eienr Legende
 t2= time.time()
 print(t2-t1)
+plt.savefig("Graph")
 plt.show() #Zeichnen des Plots
 
 
