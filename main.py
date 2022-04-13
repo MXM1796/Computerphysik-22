@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import matplotlib.lines as lines
 
 
-points = [[0, 0], [0.5, 0], [1, 0], [0, 0.5], [1, 0.5], [0, 1], [0.5, 1], [1, 1]]#Initialisierung der Punkte p_0  bis p_7
+
+
 
 
 def randomWalk(p, q0, N):                          # Implementierung des randomwalks
@@ -30,12 +32,40 @@ def getN(q, e):                                    # Funktion zum zählen der ni
 
 
 
-def getFractalDim(q, e):                            # Implementierung der Formel (1) mit e_i= 1/2^i
+def getFractalDim(q, e):                           # Implementierung der Formel (1) mit e_i= 1/2^i
     return np.log(getN(q, e) / getN(q, e / 2)) / (np.log(1 / 2))
 
+points = [[0, 0], [0.5, 0], [1, 0], [0, 0.5], [1, 0.5], [0, 1], [0.5, 1], [1, 1]]#Initialisierung der Punkte p_0  bis p_7
+q=randomWalk(points,points[0],1000000)#Erzeugen der Punkte q_n
+
+#Erzeugen des Fraktals
+a=np.transpose(q)# Zum plotten muss die Matrix transponiert werden
+plt.figure(100)
+plt.figure(figsize=(10, 10))# Bildgröße einstellen
+plt.plot(a[0],a[1],"ob" ,ms=1)# Erzeugen des Plots mit Punktgröße ms
+plt.xlabel("x")# x-Achse beschriften
+plt.ylabel("y")# y-Achse beschriften
+#plt.show()     #Zeichnen des Plots
+
+# Erzeugen des Dimensionsplot
+i= range(2,9)
+e= np.divide(1,np.power(2,i))# Berechnen der Gitterkonstanten von e_2 bis e_8
+D=[]
+for k in e:# Berchnen der fractalen Dimensionen für vercshiedenen Gitterkonstanten
+    D.append(getFractalDim(q,k))
 
 
-#print (getFractalDim(randomWalk(points,points[0],1000),e=1/128))
-q=np.transpose(randomWalk(points,points[0],1000))
-plt.plot(q[0],q[1],"ob")
-plt.show()
+#Erzeugen der analytischen Gerade
+plt.figure(200)
+x1 = np.linspace(2,8,50);
+y1=np.add(x1*0,np.log(8)/np.log(3))
+plt.plot(x1,y1,label="anayltisch")
+
+plt.plot(i,D,label="numerisch")#i gegen D auftragen
+plt.xlabel("i")# x-Achse beschriften
+plt.ylabel("D")# y-Achse berschriften
+
+plt.legend() #Erstellen eienr Legende
+plt.show() #Zeichnen des Plots
+
+
