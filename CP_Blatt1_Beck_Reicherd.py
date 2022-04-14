@@ -34,7 +34,7 @@ def getFractalDim(q, e):                           # Implementierung der Formel 
     return np.log(getN(q, e) / getN(q, e / 2)) / (np.log(1 / 2))
 t1= time.time()
 points = [[0, 0], [0.5, 0], [1, 0], [0, 0.5], [1, 0.5], [0, 1], [0.5, 1], [1, 1]]#Initialisierung der Punkte p_0  bis p_7
-q=randomWalk(points,points[0],100000)#Erzeugen der Punkte q_n
+q=randomWalk(points,points[0],1000000)#Erzeugen der Punkte q_n
 
 #Erzeugen des Fraktals
 a=np.transpose(q)# Zum plotten muss die Matrix transponiert werden
