@@ -69,7 +69,7 @@ plt.ylabel("D")# y-Achse berschriften
 
 plt.legend() #Erstellen eienr Legende
 t2= time.time()
-print("Rechenzeit: "+t2-t1)
+print("Rechenzeit: "+str(t2-t1))
 plt.savefig("Graph")
 plt.show() #Zeichnen des Plots
 
