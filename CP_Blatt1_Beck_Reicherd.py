@@ -52,6 +52,7 @@ D=[]
 for k in e:# Berchnen der fractalen Dimensionen für vercshiedenen Gitterkonstanten
     D.append(getFractalDim(q,k))
 
+print((D[5] + D[6])/2)
 
 #Erzeugen der analytischen Gerade
 plt.figure(200)
