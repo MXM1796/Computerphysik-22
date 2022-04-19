@@ -56,7 +56,6 @@ D=[]
 for k in e:# Berchnen der fractalen Dimensionen für vercshiedenen Gitterkonstanten
     D.append(getFractalDim(q,k))
 
-print((D[5] + D[6])/2)
 
 #Erzeugen der analytischen Gerade
 plt.figure(200)
@@ -70,7 +69,7 @@ plt.ylabel("D")# y-Achse berschriften
 
 plt.legend() #Erstellen eienr Legende
 t2= time.time()
-print(t2-t1)
+print("Rechenzeit: "+t2-t1)
 plt.savefig("Graph")
 plt.show() #Zeichnen des Plots
 
