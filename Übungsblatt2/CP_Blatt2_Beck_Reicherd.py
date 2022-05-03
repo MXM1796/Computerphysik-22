@@ -6,12 +6,19 @@ import math
 a = pd.read_csv("abweichungdat.sec", sep=" ", encoding='ISO-8859-1')
 y1 = a._get_column_array(1)
 x1 = a._get_column_array(0)
-x=[]
-y=[]
+x_v=[]
+y_v=[]
+
+x_m=[]
+y_m=[]
 for i in range(0,y1.size):
     if x1[i]>0.0001:
-        x.append(x1[i])
-        y.append(y1[i])
+        x_v.append(x1[i])
+        x_v.append(y1[i])
+    else:
+        x_m.append(x1[i])
+        x_m.append(y1[i])
+
 
 
 plt.scatter(np.log(x),np.log(y))
