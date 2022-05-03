@@ -12,16 +12,26 @@ y_v=[]
 x_m=[]
 y_m=[]
 for i in range(0,y1.size):
-    if x1[i]>0.0001:
+    if x1[i]>10**(-3):
         x_v.append(x1[i])
-        x_v.append(y1[i])
+        y_v.append(y1[i])
     else:
         x_m.append(x1[i])
-        x_m.append(y1[i])
+        y_m.append(y1[i])
 
-
-
-plt.scatter(np.log(x),np.log(y))
+x_vLog=np.log(x_v)
+y_vLog=np.log(y_v)
+average_x= np.average(x_vLog)
+average_y= np.average(y_vLog)
+average_x2= np.average(np.power(x_vLog,2))
+average_xy= np.average(np.multiply(x_vLog,y_vLog))
+m= (average_xy-average_x*average_y)/(average_x2-average_x**2)
+n= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
+print("m="+str(m)+",  n="+str(n))
+x_fit=np.arange(np.min(x_vLog),np.max(x_vLog),1)
+y_fit=x_fit*m+n
+plt.plot(x_fit,y_fit)
+plt.scatter(x_vLog,y_vLog,1)
 plt.show()
 # Teil 2
 
