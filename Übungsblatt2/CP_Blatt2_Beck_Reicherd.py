@@ -33,7 +33,7 @@ average_x= np.average(x_vLog) # Berechnung verschiedener Mittelwerte
 average_y= np.average(y_vLog)
 average_x2= np.average(np.power(x_vLog,2))
 average_xy= np.average(np.multiply(x_vLog,y_vLog))
-m= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berchnung der Geraden
+m= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berechnung der Geraden
 n= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
 chi= np.average(np.power(np.add(y_vLog,np.add(np.multiply(-m,x_vLog),-n)),2))# Berechnung des mittleren Abstandsquadrats
 print("m="+str(m)+",  n="+str(n),"durchschnittliches Abstandsquadrat:"+str(chi))
