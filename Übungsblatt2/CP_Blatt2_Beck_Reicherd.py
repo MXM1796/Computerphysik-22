@@ -26,7 +26,7 @@ for i in range(0,y1.size):
         x_m.append(x1[i])
         y_m.append(y1[i])
 
-##################### erster Geradenfit ##################
+##################### erster Geradenfit ###################
 x_vLog=np.log(x_v) #Logarithmieren der Skalen
 y_vLog=np.log(y_v)
 average_x= np.average(x_vLog) # Berechnung verschiedener Mittelwerte
