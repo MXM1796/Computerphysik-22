@@ -37,15 +37,15 @@ m= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berechnung der Ge
 n= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
 chi= np.average(np.power(np.add(y_vLog,np.add(np.multiply(-m,x_vLog),-n)),2))# Berechnung des mittleren Abstandsquadrats
 print("m="+str(m)+",  n="+str(n),"durchschnittliches Abstandsquadrat:"+str(chi))
-x_fit=np.arange(np.min(x_vLog),np.max(x_vLog),0.01)# Berechnen der Geradenpunkte
+x_fit=np.arange(np.max(-12.0),np.max(x_vLog),0.01)# Berechnen der Geradenpunkte
 y_fit=x_fit*m+n
 plt.xlabel(r"$\ln(h)$")# Beschriften
 plt.ylabel(r"$\ln(\Delta_g)$")
 plt.plot(x_fit,y_fit,label="Geradenfit")#plotten
 plt.scatter(x_vLog,y_vLog,4,color='red',label="Datenpunkte")
 plt.legend()
-plt.savefig("Geradenfit_Aufgabenteil1")# Graphik speichern
-plt.show()# Anzeigen der Graphik
+plt.savefig("Geradenfit1")# Graphik speichern
+
 
 ##################### zweiter Geradenfit ##################
 x_mLog=np.log(x_m) #Logarithmieren der Skalen
@@ -58,14 +58,14 @@ m= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berchnung der Ger
 n= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
 chi= np.average(np.power(np.add(y_mLog,np.add(np.multiply(-m,x_mLog),-n)),2))# Berechnung des mittleren Abstandsquadrats
 print("m="+str(m)+",  n="+str(n),"durchschnittliches Abstandsquadrat:"+str(chi))
-x_fit=np.arange(np.min(x_mLog),np.max(x_mLog),0.01)# Berechnen der Geradenpunkte
+x_fit=np.arange(np.min(x_mLog),-5.0,0.01)# Berechnen der Geradenpunkte
 y_fit=x_fit*m+n
 plt.xlabel(r"$\ln(h)$")# Beschriften
 plt.ylabel(r"$\ln(\Delta_g)$")
 plt.plot(x_fit,y_fit,label="Geradenfit")#plotten
-plt.scatter(x_mLog,y_mLog,4,color='red',label="Datenpunkte")
+plt.scatter(x_mLog,y_mLog,4,color='red')
 plt.legend()
-plt.savefig("Geradenfit_Aufgabenteil1")# Graphik speichern
+plt.savefig("Geradenfit2")# Graphik speichern
 plt.show()# Anzeigen der Graphik
 
 
