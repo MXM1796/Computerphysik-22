@@ -8,22 +8,22 @@ y1 = a._get_column_array(1)
 x1 = a._get_column_array(0)
 
 plt.scatter(x1,y1)
+plt.xlabel("h")             # x-Achse beschriften
+plt.ylabel(r"$\Delta_g$")   # y-Achse beschriften
 plt.savefig("B1_Graphik1")
-plt.xlabel("h")# x-Achse beschriften
-plt.ylabel(r"$\Delta_g$")# y-Achse beschriften
 plt.show()
 
 x_v=[]
-y_v=[] #Arrays für Verfahrensfehler
+y_v=[]                      #Arrays für Verfahrensfehler
 
 x_m=[]
-y_m=[] #Arrays für Maschinenfehler
+y_m=[]                      #Arrays für Maschinenfehler
 
 for i in range(0,y1.size):
-    if x1[i]>0.0001: #Alle Werte die >0.0001 sind, werden zur Verfahrensfehlerseite hinzugefügt
+    if x1[i]>0.0001:        #Alle Werte die >0.0001 sind, werden zur Verfahrensfehlerseite hinzugefügt
         x_v.append(x1[i])
         y_v.append(y1[i])
-    else: #die restlichen zur Maschinenfehlerseite
+    else:                   #die restlichen zur Maschinenfehlerseite
         x_m.append(x1[i])
         y_m.append(y1[i])
 
