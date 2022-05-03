@@ -69,7 +69,7 @@ plt.savefig("Geradenfit_Aufgabenteil1")# Graphik speichern
 plt.show()# Anzeigen der Graphik
 
 
-##################### Aufgabenteil zwei ##################
+##################### Aufgabenteil zwei ###################
 ZweiPi = 2 * np.pi
 w_arr = np.arange(1, 21)
 h = np.linspace(1, 2, 5)
