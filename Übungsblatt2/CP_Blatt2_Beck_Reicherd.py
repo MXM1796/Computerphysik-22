@@ -6,10 +6,16 @@ import math
 a = pd.read_csv("abweichungdat.sec", sep=" ", encoding='ISO-8859-1')
 y1 = a._get_column_array(1)
 x1 = a._get_column_array(0)
-# y=np.log2(y1)
+x=[]
+y=[]
+for i in range(0,y1.size):
+    if x1[i]>0.0001:
+        x.append(x1[i])
+        y.append(y1[i])
 
-# plt.plot(x1**0.3333, y1)
-# plt.show()
+
+plt.scatter(np.log(x),np.log(y))
+plt.show()
 # Teil 2
 
 ZweiPi = 2 * np.pi
