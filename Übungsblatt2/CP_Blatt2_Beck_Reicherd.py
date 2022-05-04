@@ -41,6 +41,7 @@ m1= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berechnung der G
 n1= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
 chi= np.average(np.power(np.add(y_vLog,np.add(np.multiply(-m1,x_vLog),-n1)),2))# Berechnung des mittleren Abstandsquadrats
 print("m1="+str(m1)+",  n1="+str(n1),"durchschnittliches Abstandsquadrat:"+str(chi))
+
 x_fit=np.arange(np.max(-12.0),np.max(x_vLog),0.01)# Berechnen der Geradenpunkte
 y_fit=x_fit*m1+n1
 plt.figure(figsize=(10, 10))
@@ -63,6 +64,7 @@ m2= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berchnung der Ge
 n2= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
 chi= np.average(np.power(np.add(y_mLog,np.add(np.multiply(-m2,x_mLog),-n2)),2))# Berechnung des mittleren Abstandsquadrats
 print("m2="+str(m2)+",  n2="+str(n2),"durchschnittliches Abstandsquadrat:"+str(chi))
+
 x_fit=np.arange(np.min(x_mLog),-5.0,0.01)# Berechnen der Geradenpunkte
 y_fit=x_fit*m2+n2
 plt.xlabel(r"$\ln(h)$")# Beschriften
@@ -70,17 +72,13 @@ plt.ylabel(r"$\ln(\Delta_g)$")
 plt.plot(x_fit,y_fit,label="Geradenfit m")#plotten
 plt.scatter(x_mLog,y_mLog,4,color='red')
 plt.legend()
-
 plt.savefig("Geradenfits")# Graphik speichern
 plt.show()# Anzeigen der Graphik
 
 
 ##################### Aufgabenteil zwei ###################
 ZweiPi = 2 * np.pi
-w_arr = np.arange(1, 21)
 h = np.linspace(0.0001, 0.3, 1000)#Initialisieren von h
-
-
 
 # Zwei Punkt Formel
 def d_y_approx_2(w, h, x0):
@@ -125,9 +123,7 @@ def get_h_max_array_3point(h,x,maxDiff,x0):#Berechnet h_max(\omega) für 3 punkt
 x0=0.1
 x_values=np.log(h)
 y_values_1=np.log(np.abs(np.add(d_y_approx_2(5,h,x0),-d_y_exakt(5,x0))))#delta_g berechnen für omega=2
-
 y_values_2=np.log(np.abs(np.add(d_y_approx_3(5,h,x0),-d_y_exakt(5,x0))))#delta_g berechnen für omega=2
-
 y_expected1=x_values-x_values[0]+y_values_1[0]#Berechnung der erwarteten Geraden
 y_expected2=x_values*2-x_values[0]*2+y_values_2[0]
 plt.plot(x_values,y_expected1,label="erwartet 2punkt")
@@ -139,7 +135,9 @@ plt.xlabel(r"$\ln{h}$")
 plt.ylabel(r"$\ln{\Delta_g}$")
 plt.savefig("Verfahrensfehler_x1");
 plt.show()
-print("hmax für x1,2punkt und omega=5: "+str(get_h_max(x_values,y_values_1,y_expected1,1)))
+
+
+print("hmax für x1,2punkt und omega=5: "+str(get_h_max(x_values,y_values_1,y_expected1,1)))#berchnen von hmax
 print("hmax für x1,3punkt und omega=5: "+str(get_h_max(x_values,y_values_2,y_expected2,1)))
 plt.xlabel(r"$\omega$")
 plt.ylabel(r"$h_{max}$")
@@ -150,7 +148,7 @@ plt.savefig("Hmax_von_omega_1")
 plt.show()
 
 
-
+# Plots für x_2
 x0=0.249
 x_values=np.log(h)
 y_values_1=np.log(np.abs(np.add(d_y_approx_2(5,h,x0),-d_y_exakt(5,x0))))
@@ -166,8 +164,12 @@ plt.xlabel(r"$\ln{h}$")
 plt.ylabel(r"$\ln{\Delta_g}$")
 plt.savefig("Verfahrensfehler_x2");
 plt.show()
-print("hmax für x2,2punkt und omega=5: "+str(get_h_max(x_values,y_values_1,y_expected1,1)))
+
+
+print("hmax für x2,2punkt und omega=5: "+str(get_h_max(x_values,y_values_1,y_expected1,1)))#hmax berechnen
 print("hmax für x2,3punkt und omega=5: "+str(get_h_max(x_values,y_values_2,y_expected2,1)))
+
+
 plt.xlabel(r"$\omega$")
 plt.ylabel(r"$h_{max}$")
 plt.plot(np.linspace(1,21,10000),get_h_max_array_2point(h,x_values,1,x0),label="2punkt")
