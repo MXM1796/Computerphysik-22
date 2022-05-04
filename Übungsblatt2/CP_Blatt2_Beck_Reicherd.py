@@ -33,12 +33,13 @@ average_x= np.average(x_vLog) # Berechnung verschiedener Mittelwerte
 average_y= np.average(y_vLog)
 average_x2= np.average(np.power(x_vLog,2))
 average_xy= np.average(np.multiply(x_vLog,y_vLog))
-m= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berechnung der Geraden
-n= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
-chi= np.average(np.power(np.add(y_vLog,np.add(np.multiply(-m,x_vLog),-n)),2))# Berechnung des mittleren Abstandsquadrats
-print("m="+str(m)+",  n="+str(n),"durchschnittliches Abstandsquadrat:"+str(chi))
+m1= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berechnung der Geraden
+n1= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
+chi= np.average(np.power(np.add(y_vLog,np.add(np.multiply(-m1,x_vLog),-n1)),2))# Berechnung des mittleren Abstandsquadrats
+print("Die Steigung und das durchschnittliche Abstandsquadrat für die Verfahrensfehlergerade")
+print("m1="+str(m1)+",  n1="+str(n1),"durchschnittliches Abstandsquadrat:"+str(chi))
 x_fit=np.arange(np.max(-12.0),np.max(x_vLog),0.01)# Berechnen der Geradenpunkte
-y_fit=x_fit*m+n
+y_fit=x_fit*m1+n1
 plt.xlabel(r"$\ln(h)$")# Beschriften
 plt.ylabel(r"$\ln(\Delta_g)$")
 plt.plot(x_fit,y_fit,label="Geradenfit")#plotten
@@ -54,12 +55,13 @@ average_x= np.average(x_mLog) # Berechnung verschiedener Mittelwerte
 average_y= np.average(y_mLog)
 average_x2= np.average(np.power(x_mLog,2))
 average_xy= np.average(np.multiply(x_mLog,y_mLog))
-m= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berchnung der Geraden
-n= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
-chi= np.average(np.power(np.add(y_mLog,np.add(np.multiply(-m,x_mLog),-n)),2))# Berechnung des mittleren Abstandsquadrats
-print("m="+str(m)+",  n="+str(n),"durchschnittliches Abstandsquadrat:"+str(chi))
+m2= (average_xy-average_x*average_y)/(average_x2-average_x**2)# Berchnung der Geraden
+n2= (average_x2*average_y-average_x*average_xy)/(average_x2-average_x**2)
+chi= np.average(np.power(np.add(y_mLog,np.add(np.multiply(-m2,x_mLog),-n2)),2))# Berechnung des mittleren Abstandsquadrats
+print("Die Steigung und das durchschnittliche Abstandsquadrat für die Machinefehlergerade")
+print("m2="+str(m2)+",  n2="+str(n2),"durchschnittliches Abstandsquadrat:"+str(chi))
 x_fit=np.arange(np.min(x_mLog),-5.0,0.01)# Berechnen der Geradenpunkte
-y_fit=x_fit*m+n
+y_fit=x_fit*m2+n2
 plt.xlabel(r"$\ln(h)$")# Beschriften
 plt.ylabel(r"$\ln(\Delta_g)$")
 plt.plot(x_fit,y_fit,label="Geradenfit")#plotten
@@ -67,6 +69,10 @@ plt.scatter(x_mLog,y_mLog,4,color='red')
 plt.legend()
 plt.savefig("Geradenfit2")# Graphik speichern
 plt.show()# Anzeigen der Graphik
+
+hop = np.exp(np.divide(n1-n2,m2-m1))
+
+print("Der Schnittpunkt liegt bei",round(hop,5))
 
 
 ##################### Aufgabenteil zwei ###################
