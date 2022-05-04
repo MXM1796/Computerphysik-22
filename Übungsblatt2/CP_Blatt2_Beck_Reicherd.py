@@ -174,7 +174,7 @@ plt.plot(np.linspace(1,21,10000),get_h_max_array_2point(h,x_values,1,x0),label="
 plt.plot(np.linspace(1,21,10000),get_h_max_array_3point(h,x_values,1,x0),label="3punkt")
 plt.legend()
 plt.savefig("Hmax_von_omega_2")
-plt.show()
+plt.show()#
 
 
 
