@@ -4,11 +4,11 @@ class Ball:
 
     def __init__(self):
         self.v = np.array([0.0, 0.0, 0.0])
-        self.x = np.array([0.0, 126.5, 0.0])
+        self.x = np.array([0.0, 126.5, 0.5])
         self.w = np.array([3.0, 0.0, 0.0])
-        self.mass = 1.0
+        self.mass = 0.625
         self.density = 1.1
-        self.radius = 0.3
+        self.radius = 0.12
         self.gravitation = 9.81
         self.cw = 0.09
         self.area = np.pi * self.radius ** 2
@@ -27,17 +27,20 @@ class Ball:
     def update(self, time):
         self.v += self.getAcceleration() * time
         self.x += self.v * time
-        #print("x= "+str(self.x))
-        #print("v= "+str(self.v))
+
 
 b=Ball()
 xValues=[]
 yValues=[]
-for t in np.linspace(0,10,100000):
+for t in np.linspace(0,11,10000):
 
-    b.update(10/100000)
-    xValues.append(t)
+    b.update(11/10000)
+    xValues.append(b.x[2])
     yValues.append(b.x[1])
+    if b.x[1]<=0:
+        print(t)
+        print(b.x[2])
+        break
 
 plt.plot(xValues,yValues)
 plt.show()
