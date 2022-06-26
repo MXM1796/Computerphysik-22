@@ -1,3 +1,7 @@
+#kein kompilieren notwendig
+#python3 CP_Blatt4_Beck_Reicherd.py
+#Mit dem obigen Befehl kann das Programm ausgeführt werden. Es werden dann alle Graphen sowohl angezeigt als auch abgespeichert.
+# K. Beck, M. Reicherd
 import numpy as np
 import matplotlib.pyplot as plt
 import time
