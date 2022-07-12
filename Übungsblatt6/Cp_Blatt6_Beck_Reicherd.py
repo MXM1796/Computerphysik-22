@@ -18,7 +18,7 @@ def QR(alpha, beta): #QR Iteration
         y = beta[0]
 
         for i in range(0,n-2):
-            print(i)
+            #print(i)
             if np.abs(x) <= tau*np.abs(y):
                 w = -y
                 c = 0
@@ -82,11 +82,46 @@ W = np.divide(l[0]*(l[0]+1),r**2) - np.divide(b**2*v0, 1+np.exp((r-b)/a)*Plankma
 # beta = np.full(n-1,-1) #Überführe nebendiagonalelemente in beta arr
 
 #Test
-alpha = [4.,4.,4.,4.,4.] #n=3
-beta = [1.,1.,1.,1.]  #n=2
+alpha = [1.,3.,4.]#n=3
+beta = [1.,1.,1.]  #n=2
 
 
-a,b = iteration(alpha, beta)
+
+#a,b = iteration(alpha, beta)
 
 print(a,b)
+
+def QR1(alpha, beta, epsillon):
+    print(epsillon)
+    tau = np.finfo(float).eps
+    n= len(alpha)
+    while np.abs(beta[n-2])> epsillon:
+        sigma = alpha[n-1]
+        print("while")
+        x= alpha[0]-sigma
+        y = beta[0]
+        for i in range(n-1):
+            print("for")
+            if np.abs(x)<tau* np.abs(y):
+                omega=-y
+                c=0
+                s=1
+            else:
+                omega = np.sqrt(x**2+y**2)
+                c= x/omega
+                s= -y/omega
+            d= alpha[i]-alpha[i+1]
+            z= (2* c* beta[i]+d*s)*s
+            alpha[i]= alpha[i]-z
+            alpha[i+1] = alpha[i+1] + z
+            beta[i]= d*c*s+(c**2-s**2)*beta[i]
+            x= beta[i]
+            if i>0:
+                beta[i-1]= omega
+            if i < n-2:
+                y = -s*beta[i+1]
+                beta[i+1]=c*beta[i+1]
+    return [alpha,beta]
+
+print(QR1(alpha,beta,10**-3))
 
